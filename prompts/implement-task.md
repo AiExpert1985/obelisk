@@ -172,12 +172,10 @@ Append its content exactly as written to
 - Do NOT reinterpret
 - Preserve exact contract text
 
-**If contracts-summary `## Unprocessed` contains ≥ 10 entries 
-→ Run `/obelisk-core/prompts/internal/maintain-contracts.md`**
 
 ---
 
-#### **3 — Promote Design Changes**
+#### **3 — Apply Design Changes**
 
 If `task.md` has `## Design-Changes` section:
 
@@ -196,9 +194,6 @@ Append its content (excluding Summary and Deferred) to:
 ```
 
 
-**If design-summary `## Unprocessed` contains ≥ 10 entries 
-→ Run `/obelisk-core/prompts/internal/maintain-desgin.md`** 
-
 ---
 
 #### **4 — Archive Workspace**
@@ -207,6 +202,16 @@ Archive all files to:
 `/obelisk/archive/completed/YYYYMMDD-HHMM-[task-name]/`
 
 Clear `/obelisk/workspace/`
+
+---
+
+## Auto-Maintain
+
+**If design-summary `## Unprocessed` contains ≥ 10 entries** 
+or 
+**contracts-summary `## Unprocessed` contains ≥ 10 entries**
+
+**→ Run `/obelisk-core/prompts/internal/maintain-project.md`** 
 
 ---
 

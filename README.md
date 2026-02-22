@@ -114,6 +114,7 @@ It intentionally trades early friction for long-term stability.
 | `/implement-task`         | Implement, review, archive         |
 | `/ask-project`            | Query project knowledge            |
 | `/help`                   | Show available commands            |
+|                           |                                    |
 
 ---
 

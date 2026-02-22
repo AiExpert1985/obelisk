@@ -7,14 +7,12 @@ description: Compact log and regenerate contracts summary
 - `/obelisk/contracts/contracts-summary.md`
 - `/obelisk/design/design-log.md`
 - `/obelisk/design/design-summary.md`
-- `/obelisk/contracts/contracts-log.md`
 
 Missing → STOP.
 
 ---
 
 ## MAINTAIN CONTRACTS
-
 
 ## Stage 1 — Process Unprocessed
 
@@ -31,8 +29,8 @@ Missing → STOP.
 - `/obelisk/design/design-log.md` (evolution context)
 - Codebase (enforcement context only)
 
-Contracts-log defines declared intent.  
-Design-log provides context.  
+Contracts-log defines declared intent.
+Design-log provides context.
 Code does NOT override contracts.
 
 ---
@@ -48,8 +46,6 @@ A contract is superseded if a later log entry:
 
 If uncertain → keep both and flag.
 
----
-
 ### Consolidation
 
 Merge contracts expressing the same constraint without altering meaning.
@@ -59,8 +55,6 @@ Do NOT merge:
 - Different actors or contexts
 
 If uncertain → do not merge.
-
----
 
 ### Enforcement Gaps
 
@@ -75,7 +69,6 @@ Do NOT remove contracts due to missing enforcement.
 ## Write Summary
 
 Overwrite `/obelisk/contracts/contracts-summary.md`:
-
 ```markdown
 # Contracts Summary
 
@@ -94,8 +87,6 @@ Generated: YYYY-MM-DD
 ## Unprocessed
 ```
 
----
-
 ## Constraints
 
 - contracts-log.md is immutable and authoritative.
@@ -104,13 +95,9 @@ Generated: YYYY-MM-DD
 - Keep summary concise (less than 1000 tokens).
 - `## Unprocessed` must remain present and empty.
 
-
 ---
-
 
 ## MAINTAIN DESIGN
-
----
 
 ## Stage 1 — Process Unprocessed
 
@@ -141,10 +128,8 @@ A decision is superseded if a later entry:
 - Clearly contradicts it in the same domain
 - Removes the feature or module
 
-Show current state only.  
+Show current state only.
 If uncertain → keep both and flag in Open Design Questions.
-
----
 
 **Merging**
 Consolidate decisions about the same architectural element without altering meaning.
@@ -153,8 +138,6 @@ Do NOT merge:
 - Orthogonal design decisions
 - Different modules
 - Conflicting approaches (flag instead)
-
----
 
 **Contract Conflicts**
 If design contradicts a contract:
@@ -167,7 +150,6 @@ If design contradicts a contract:
 ## Write Summary
 
 Overwrite `/obelisk/design/design-summary.md`:
-
 ```markdown
 # Design Summary
 
