@@ -211,7 +211,7 @@ Clear `/obelisk/workspace/`
 or 
 **contracts-summary `## Unprocessed` contains ≥ 10 entries**
 
-**→ Run `/obelisk-core/prompts/internal/maintain-project.md`** 
+**→ Run `/obelisk-core/prompts/maintain-project.md`** 
 
 ---
 
