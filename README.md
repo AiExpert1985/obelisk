@@ -204,15 +204,19 @@ The system evolves with explicit authority and no silent drift.
 
 Obelisk separates framework prompts from project state into two distinct folders:
 ```
-/obelisk-core/          # Shared framework prompts (git submodule)
-├── init-project.md
-├── new-task.md
-├── implement-task.md
-├── ask-project.md
-├── suggest-task.md
-├── hotfix.md
-├── maintain-project.md
-└── help.md
+/obelisk-core/
+├── README.md
+├── prompts/
+│   ├── init-project.md
+│   ├── new-task.md
+│   ├── implement-task.md
+│   ├── ask-project.md
+│   ├── suggest-task.md
+│   ├── hotfix.md
+│   ├── maintain-project.md
+│   └── help.md
+└── guidelines/
+    └── ai-engineering.md
 
 /obelisk/               # Project state (local, per-project)
 ├── contracts/
