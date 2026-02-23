@@ -289,18 +289,14 @@ _(empty — populated after maintenance)_
 
 ---
 
-### 3. Create Project Init Snapshot
+### 3. Create `/obelisk/history/history-log.md`
 
-Write `/obelisk/project/project-initial-description.md`:
+
+**Format**
 
 ```
-# Project Init Snapshot
 
-> This file is a frozen snapshot of the initial project discussion.
-> It is never updated, maintained, or treated as authoritative.
-> Sections marked (Initial) may be outdated after early tasks.
-
-Generated: YYYY-MM-DD
+## YYYYMMDD-HHMM | Project Initialization | APPROVED
 
 ## Vision
 [What and why]
@@ -325,6 +321,10 @@ Generated: YYYY-MM-DD
 
 ## Notes
 [Anything else discussed during init]
+
+---
+
+
 ```
 
 
