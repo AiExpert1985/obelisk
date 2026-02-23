@@ -1,28 +1,6 @@
 ---
 description: Creates a new Obelisk task
 ---
-## Required Files
-
-- `/obelisk/contracts/contracts-summary.md`
-- `/obelisk/design/design-summary.md`
-- `/obelisk/guidelines/ai-engineering.md`
-
-**If any file is missing:**
-- STOP and report missing file
-- OUTPUT: Use `@init-project` to initialize the project.
-
-
----
-
-
-## EXECUTION GUARD (CRITICAL)
-
-Task Discovery defines intent.
-
-You MUST NOT implement, or modify code during this phase.  
-If execution is triggered at any point → **STOP immediately**.
-
----
 
 ## Entry Point Detection
 
@@ -51,6 +29,29 @@ STOP. Wait for response.
 
  Set task_description = [response]
 
+
+---
+
+## Required Files
+
+- `/obelisk/contracts/contracts-summary.md`
+- `/obelisk/design/design-summary.md`
+- `/obelisk/guidelines/ai-engineering.md`
+
+**If any file is missing:**
+- STOP and report missing file
+- OUTPUT: Use `@init-project` to initialize the project.
+
+
+---
+
+
+## EXECUTION GUARD (CRITICAL)
+
+Task Discovery defines intent.
+
+You MUST NOT implement, or modify code during this phase.  
+If execution is triggered at any point → **STOP immediately**.
 
 ---
 
