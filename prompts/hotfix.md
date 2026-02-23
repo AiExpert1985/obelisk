@@ -7,7 +7,6 @@ description: Apply small mechanical fix directly
 - Scope is narrow, low-risk and clearly defined
 - Change is mechanical and localized
 - No design or architectural decisions required
-- No contract changes required
 
 ### Common examples (non-exhaustive):
 - Typo, formatting, or whitespace fix
@@ -29,7 +28,6 @@ description: Apply small mechanical fix directly
 
 - Apply only the minimal necessary modification
 - Do not expand scope, refactor, or touch code outside the direct fix
-- MUST NOT modify contracts or design files
 - If scope grows or uncertainty appears → STOP and report
 
 ---
