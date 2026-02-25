@@ -10,7 +10,15 @@ If any are missing → STOP and report path.
 
 ---
 
-## IMPLEMENTATION PHASE
+## ⚠️ CRITICAL: THREE-PHASE EXECUTION
+
+You MUST execute exactly three phases in sequence. Each phase must complete BEFORE the next begins.
+
+**Phase Boundaries are HARD. Do not skip or reorder.**
+
+---
+
+## PHASE 1: IMPLEMENTATION
 
 ### Execution Rules
 
@@ -39,7 +47,7 @@ STOP immediately if:
 - Continuing would risk irreversible or unsafe changes
 - You are uncertain whether a change is mechanical
 
-STOP is terminal. No further execution is allowed.
+**STOP is TERMINAL. Do not proceed to Phase 2. Report the issue and halt.**
 
 ---
 
@@ -57,10 +65,9 @@ Log any such adaptation.
 
 ---
 
-### Implementation Notes
+### End of Phase 1
 
-Append to `/obelisk/workspace/task.md` under `## Implementation Notes`:
-
+When implementation is complete (or stopped), append to `/obelisk/workspace/task.md` under `## Implementation Notes`:
 ```markdown
 ## Implementation Notes
 
@@ -75,14 +82,17 @@ Append to `/obelisk/workspace/task.md` under `## Implementation Notes`:
 (If none: "Implemented as specified. No divergences.")
 ```
 
+**PHASE 1 COMPLETE. Proceed to PHASE 2.**
+
 ---
 
-## Review Phase
+## PHASE 2: REVIEW
+
+### Review Rules
 
 For every ✔ provide evidence: file path + function/class, code snippet, or precise observed logic. Vague statements are not evidence.
 
-Append to `/obelisk/workspace/task.md` under `## Review-notes`:
-
+Append to `/obelisk/workspace/task.md` under `## Review`:
 ```markdown
 ## Review
 
@@ -96,14 +106,19 @@ Append to `/obelisk/workspace/task.md` under `## Review-notes`:
 **Notes:** [mechanical divergences or observations only]
 ```
 
----
-
 ### Status Gate
 
-**If REJECTED:**
+**If REJECTED → Go to PHASE 3A (Rejection Archival)**
+
+**If APPROVED → Go to PHASE 3B (Completion Archival)**
+
+**PHASE 2 COMPLETE. Proceed to PHASE 3.**
+
+---
+
+## PHASE 3A: ARCHIVAL — REJECTED TASK
 
 1. Append to `/obelisk/history/history-log.md`:
-
 ```markdown
 ## YYYYMMDD-HHMM | [Task Name] | REJECTED
 
@@ -116,22 +131,22 @@ Append to `/obelisk/workspace/task.md` under `## Review-notes`:
 3. Clear `/obelisk/workspace/`
 
 Output:
-
 ```
 ⚠️ TASK CLOSED — REJECTED
 Archived: /obelisk/history/rejected/YYYYMMDD-HHMM-[task-name].md
 ```
 
-STOP.
+**STOP. TASK EXECUTION COMPLETE.**
 
 ---
 
-**If APPROVED:**
+## PHASE 3B: ARCHIVAL — APPROVED TASK
 
-#### 1 — Write History
+Execute these steps in order:
+
+#### Step 1 — Write History
 
 Append to `/obelisk/history/history-log.md`:
-
 ```markdown
 ## YYYYMMDD-HHMM | [Task Name] | APPROVED
 
@@ -140,14 +155,11 @@ Append to `/obelisk/history/history-log.md`:
 ---
 ```
 
----
-
-#### 2 — Apply Contract Changes
+#### Step 2 — Apply Contract Changes
 
 If `task.md` has `## Contract-Changes` section:
 
 Append to `/obelisk/contracts/contracts-summary.md` → `## Unprocessed`:
-
 ```markdown
 ## YYYYMMDD-HHMM | [Task Name]
 
@@ -156,14 +168,11 @@ Append to `/obelisk/contracts/contracts-summary.md` → `## Unprocessed`:
 ---
 ```
 
----
-
-#### 3 — Apply Design Changes
+#### Step 3 — Apply Design Changes
 
 If `task.md` has `## Design-Changes` section:
 
 Append to `/obelisk/design/design-summary.md` → `## Unprocessed`:
-
 ```markdown
 ## YYYYMMDD-HHMM | [Task Name]
 
@@ -172,27 +181,23 @@ Append to `/obelisk/design/design-summary.md` → `## Unprocessed`:
 ---
 ```
 
----
+#### Step 4 — Archive Task
 
-#### 4 — Archive Task
+Copy `task.md` to `/obelisk/history/completed/YYYYMMDD-HHMM-[task-name].md`
+Clear `/obelisk/workspace/`
 
-Copy `task.md` to `/obelisk/history/completed/YYYYMMDD-HHMM-[task-name].md` Clear `/obelisk/workspace/`
+#### Step 5 — Check Auto-Maintain Trigger
 
----
+If `contracts-summary.md → ## Unprocessed` contains ≥ 10 entries OR `design-summary.md → ## Unprocessed` contains ≥ 10 entries:
 
-## Auto-Maintain
+Output: "Auto-maintain threshold reached. Run `/maintain-project` before next task."
 
-If `contracts-summary.md → ## Unprocessed` contains ≥ 10 entries or `design-summary.md → ## Unprocessed` contains ≥ 10 entries
+**PHASE 3B COMPLETE.**
 
-→ Run `/obelisk-core/prompts/maintain-project.md`
-
----
-
-## Output
-
+Output:
 ```
 ✅ TASK CLOSED — APPROVED
 Archived: /obelisk/history/completed/YYYYMMDD-HHMM-[task-name].md
 ```
 
-STOP.
+**STOP. TASK EXECUTION COMPLETE.**
