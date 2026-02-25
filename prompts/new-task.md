@@ -1,6 +1,7 @@
 ---
 description: Creates a new Obelisk task
 ---
+
 ## Execution Protocol
 
 This prompt executes in strictly ordered phases:
@@ -16,15 +17,11 @@ End Task Freeze with: `STATUS: TASK_READY`
 
 Do not generate task.md until Task Freeze phase.
 
-
 ---
 
 ## Entry Point Detection
 
-**If user provided description:**
-- Extract task_description from input
-
-**If no description:** Output exactly: "Describe your task" STOP. Wait for response. Set task_description = [response]
+**If user provided description:** - Extract task_description from input **If no description:** Output exactly: "Describe your task" STOP. Wait for response. Set task_description = [response]
 
 ---
 
@@ -49,48 +46,97 @@ Do not generate task.md until Task Freeze phase.
 ## Contract vs. Design Boundary
 
 - **Contract:** A business invariant that must remain true regardless of implementation. If violated, business correctness or historical data integrity breaks.
+
 - **Design:** How the system is built (tech stack, schema, architecture, modules, UI, patterns).
+
 - **Boundary test:**
   - Must stay true even if the system is rebuilt differently → Contract
   - Describes structure, schema, tech, or implementation detail → Design
 
 ---
 
-## PHASE 1: CLARIFICATION
+## Discovery Questions
 
-Output exactly: `PHASE 1: CLARIFICATION`
+### Question Rules
 
-Ask questions covering:
-- What, why, for whom
-- Scope boundaries (what's in/out)
-- Key constraints or dependencies
+**Ask ONLY questions affecting:**
 
-Output exactly:
-```
-STATUS: AWAITING_L1_ANSWERS
-```
+- Task definition or intent
+- Scope boundaries
+- Feasibility or approach
+- Required constraints
 
-STOP. Do not proceed until user replies.
+**Do NOT ask about:**
+
+- Information already stated in contracts-summary, design-summary, task description, or prior answers
+
+Keep questions high-impact. Skip obvious or low-value questions.
 
 ---
 
-## PHASE 2: REFINEMENT
+### Providing Recommendations
 
-Output exactly: `PHASE 2: REFINEMENT`
+
+Provide a brief recommendation ONLY when one option is objectively preferable based on existing contracts, design constraints, or technical realities.
+
+If preference depends on user taste, unclear trade-offs, or speculation → do not recommend.
+
+Place recommendation immediately after the question.
+
+
+**Format:**
+
+```markdown
+[Question]
+
+Recommendation: [Option] — [brief reason].
+```
+
+---
+
+### Clarification Questions (MANDATORY)
+
+Always ask at least one clarification question.
+
+**📌 Questions:**
+- What, why, for whom
+- Scope boundaries (what's in/out)
+- Key constraints or dependencies (including required or preferred external libraries, if any)
+
+**After Clarification Questions:**
+> "Answers helps model fully understand current task."
+
+→ If no clarification gaps remain AND no contract require user input:
+   - State: "No further questions are needed."
+   - Proceed to Task Freeze
+
+→ Otherwise: Continue to Refinement Questions
+
+---
+
+### Refinement Questions (If Needed)
 
 Resolve remaining issues in organized groups. Skip each group if no issues detected.
 
-**📌 Group 1: Clarification** (if gaps remain from Phase 1)
-- Resolve ambiguities
+---
+
+**📌 Group 1: Clarification** (if gaps remain)
+
+- Resolve ambiguities from clarification Questions
 - Important edge cases needing user input
 - Approach selection when multiple valid options
 - Flag if task should be split
+
+*Skip if no clarification needed.*
+
+---
 
 **📋 Group 2: Contracts**
 
 Check task against all loaded contracts.
 
 **If conflict found:**
+
 ```
 ⚠️ Contract Conflict
 
@@ -107,6 +153,7 @@ Choose: 1/2
 ```
 
 **If new contract needed** (ONLY for business-critical rules):
+
 ```
 📋 Contract Addition
 
@@ -116,34 +163,22 @@ Rule: [why contract-worthy]
 Add? yes/no
 ```
 
-If no refinement issues exist in either group, output exactly:
-`"No refinement needed."`
-
-Output exactly:
-```
-STATUS: AWAITING_L2_ANSWERS
-```
-
-STOP. Do not proceed until user replies.
+*Skip if no contract issues.*
 
 ---
 
-## PHASE 3: FREEZE
+# TASK FREEZE
 
-Output exactly: `PHASE 3: FREEZE`
-
-Only begin this phase after user has replied to Phase 2.
-
-### Recommendations
-
-Provide a brief recommendation ONLY when one option is objectively preferable based on existing contracts, design constraints, or technical realities. Place immediately after the relevant question.
-
-### Clean Workspace
+## Clean Workspace
 
 Delete all files in `/obelisk/workspace/` before proceeding.
 
-### Create `/obelisk/workspace/task.md`
+---
+
+## Create `/obelisk/workspace/task.md`
+
 ```markdown
+
 # Task: [One-line descriptive name]
 
 ## Goal
@@ -185,7 +220,9 @@ Delete all files in `/obelisk/workspace/` before proceeding.
 **Intent:** [1 short paragraph]
 **Key Decisions:** [bullets]
 **Rejected / Deferred:** [bullets or omit]
+
 ```
+
 
 ### Rules
 All sections must be concise and focused. Omit any section that has no content.
@@ -220,11 +257,11 @@ All sections must be concise and focused. Omit any section that has no content.
 
 ## OUTPUT
 
-Output exactly:
-```
-STATUS: READY_TO_FREEZE
+Output EXACTLY this block. No additions.
 
+```
 Obelisk: Task Ready
+
 Task frozen: /obelisk/workspace/task.md
 
 Review task.md.
@@ -245,10 +282,12 @@ If the user provides corrections:
    - **Substantive** — changes scope, goal, constraints, or contract interactions
 
 2. If Mechanical:
-   - Update `task.md`
+   - Update `task.md` and/or `plan.md`
    - Output: `Task updated.`
-   - Repeat terminal output block
+   - Repeat TERMINAL STATE
 
 3. If Substantive:
    - Output: `Correction changes scope or constraints. Restarting discovery.`
-   - Restart from Phase 1 using existing task description and previous answers as context
+   - Restart from ## Refinement Questions using existing task description and previous questions & answers as context
+
+If no corrections → wait for `/implement-task`
