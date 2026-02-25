@@ -3,11 +3,30 @@ description: Creates a new Obelisk task
 ---
 ## Entry Point Detection
 
-**If user provided description:**
+**Check if task description was provided:**
 
-- Extract task_description from input
+**IF user provided description:**
 
-**If no description:** Output exactly: "Describe your task" STOP. Wait for response. Set task_description = [response]
+```
+/new-task Add image picker to main screen
+```
+
+- Extract task_description = "Add image picker to main screen"
+
+
+**IF no description:**
+
+```
+/new-task
+```
+
+Output exactly:
+
+"Describe your task"
+
+STOP. Wait for response.
+
+ Set task_description = [response]
 
 
 ---
