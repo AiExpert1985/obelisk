@@ -15,75 +15,61 @@ If any missing → STOP. Output: Use `/init-project` to initialize the project.
 
 ## DISCOVERY — Mandatory
 
-You MUST surface your assumptions and ask clarifying questions 
-before presenting the task summary. Discovery is never skippable.
+Discovery is never skippable. Before presenting the task summary you MUST:
+- Surface all non-trivial assumptions
+- Ask clarifying questions on anything that would change execution
 
 Inference from contracts, design, and existing patterns is allowed.
-All non-trivial assumptions must be stated and confirmed.
-
-Your goal: make intent, scope, design decisions, and implementation 
-approach unambiguous before proceeding.
-
-Ask only what matters:
-- Unclear intent, scope, or approach
-- Decisions you cannot make unilaterally
-- Risks or constraints that would change execution
-- Anything that conflicts with existing contracts or design
+All non-trivial assumptions must be confirmed before proceeding.
 
 Do NOT ask about:
 - Anything inferable from context, contracts, or design
 - Implementation details you can decide yourself
 - Low-impact edge cases
 
-Provide a recommendation whenever the user faces a choice:
-
-```markdown
-Recommendation: [option] — [brief reason]
-```
-
 If a contract conflict is detected:
-
 ```markdown
 ⚠️ Contract Conflict
 Conflicts with: "[exact contract text]"
-Options:
-1. Adjust task to comply
-2. Update contract — [what exception is needed]
+Options: 1. Adjust task  2. Update contract
 Recommendation: [option + reason]
-Choose: 1/2
 ```
 
 If the task introduces a new business-critical rule:
-
 ```markdown
 📋 New Contract
 Rule: [what it is and why it matters]
 Add? yes/no
 ```
 
-When nothing important remains unclear, present a clear task summary:
+## Discovery Output Format
 
+No narration. No thinking out loud. No filler.
+
+**Assumptions:** [assumption] — [basis]
+**Questions:**
+1. [question]
+   Recommendation: [option] — [reason]
+
+If no questions exist: state "No clarifications needed" and list assumptions only.
+Do not proceed to Task Summary until assumptions are confirmed.
+
+## Task Summary
 ```markdown
 Task Summary
 
 Goal: [what and why]
 Scope: ✓ [included] / ✗ [excluded]
 Approach: [key design decisions]
+Assumptions: [confirmed, or "None"]
 Contracts: [new or changed, or "None"]
 Constraints: [limits implementation must respect]
 Risks: [known risks or "None"]
-
-Ready to implement. Enter `implement` to proceed.
 ```
 
-After presenting the task summary — STOP.
-Do not proceed. Do not write code. Do not explain next steps.
-
-Wait for the user to either:
-- Correct or update the summary
-- Enter `implement` to proceed
-
-If the user provides corrections, update the summary and STOP again.
+After presenting — STOP. Do not proceed. Do not write code.
+Wait for corrections or `implement`.
+If corrections received, update summary and STOP again.
 Only proceed when `implement` is received.
 
 ---
