@@ -74,7 +74,7 @@ Highest → Lowest:
 5. History Log
 6. Chat History
 
-Logs are immutable and authoritative. Summaries are working projections. Chat has no authority.
+Logs are append-only and authoritative. Summaries are working projections.
 
 ---
 
@@ -93,7 +93,7 @@ User-triggered. Model reads the full conversation and produces a canonical task 
 
 ## Auto-Maintain
 
-Each archive adds new entries to contracts-summary and design-summary. Over time these grow stale and verbose. `/maintain-project` compacts the logs and regenerates clean summaries. Triggered automatically by `@archive-task` when either summary reaches ≥ 10 unprocessed entries.
+Each archive adds new entries to contracts-summary and design-summary. Over time these grow stale and verbose. `@maintain-project` compacts the logs and regenerates clean summaries. Triggered automatically by `@archive-task` when either summary reaches ≥ 50 unprocessed line.
 
 ---
 

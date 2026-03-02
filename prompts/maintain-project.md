@@ -91,7 +91,7 @@ Generated: YYYY-MM-DD
 
 ## Constraints
 
-- contracts-log.md is immutable and authoritative.
+- contracts-log.md is append-only and authoritative — entries are never edited or removed.
 - Remove contracts only if explicitly superseded.
 - Do NOT invent, expand, or narrow contracts.
 - Keep summary concise (less than 1500 tokens).

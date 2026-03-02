@@ -85,7 +85,7 @@ If new or changed design decisions exist, append to `design-summary.md → ## Un
 
 ## 5 — Auto-Maintain Check
 
-If `## Unprocessed` in either summary ≥ 10 entries:
+If `## Unprocessed` in either summary exceeds 50 lines:
 Run `/obelisk-core/maintain-project.md`
 
 ---

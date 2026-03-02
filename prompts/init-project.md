@@ -72,7 +72,13 @@ Triggered by user entering `initialize`.
 Use ONLY information established during discovery. Do not infer or expand.
 If discovery was skipped or cut short, populate only what was explicitly established.
 
-### 1 — Create contracts-summary.md
+### 1 — Create empty logs
+
+Create the following files, empty with no content:
+- `/obelisk/contracts/contracts-log.md`
+- `/obelisk/design/design-log.md`
+
+### 2 — Create contracts-summary.md
 
 Create `/obelisk/contracts/contracts-summary.md`:
 
@@ -95,7 +101,7 @@ _(empty — populated after first maintenance)_
 [All contracts and invariants established during discovery]
 ```
 
-### 2 — Create design-summary.md
+### 3 — Create design-summary.md
 
 Create `/obelisk/design/design-summary.md`:
 
@@ -124,7 +130,7 @@ _(empty — populated after first maintenance)_
 [All design decisions established during discovery]
 ```
 
-### 3 — Create history-log.md
+### 4 — Create history-log.md
 
 Create `/obelisk/history/history-log.md`:
 
@@ -161,6 +167,7 @@ Create `/obelisk/history/history-log.md`:
 ```
 
 Output:
+
 ```
 ✅ PROJECT INITIALIZED
 ```
