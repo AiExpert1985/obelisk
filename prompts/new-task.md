@@ -20,9 +20,16 @@ If any missing → STOP. Output: Use `/init-project` to initialize the project.
 
 ---
 
-## DISCOVERY
+## DISCOVERY — Mandatory
 
-Have a natural conversation to fully understand the task.
+You MUST surface your assumptions and ask clarifying questions 
+before presenting the task summary. Discovery is never skippable.
+
+Inference from contracts, design, and existing patterns is allowed.
+All non-trivial assumptions must be stated and confirmed.
+
+Your goal: make intent, scope, design decisions, and implementation 
+approach unambiguous before proceeding.
 
 Ask only what matters:
 - Unclear intent, scope, or approach
