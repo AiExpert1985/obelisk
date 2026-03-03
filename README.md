@@ -43,7 +43,6 @@ Contracts and Design are authoritative. History is informational. Chat is tempor
 │   ├── archive-task.md
 │   ├── ask-project.md
 │   ├── suggest-task.md
-│   ├── hotfix.md
 │   ├── maintain-project.md
 │   └── help.md
 └── guidelines/
