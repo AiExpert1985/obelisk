@@ -33,8 +33,10 @@ This workflow MUST NOT:
 **Contract:** Business invariant that must hold regardless of implementation — even after a full rebuild.
 Purpose: Capture durable rules only. Not feature behavior or UI specifics.
 
-**Design:** How the system is built — tech, schema, architecture, patterns.
-Purpose: Capture long-lived architectural decisions. Not implementation details.
+**Design:** Project-level or feature-level architectural decisions only.
+Purpose: Capture decisions that shape how the system is built broadly.
+Skip entirely for: UI tweaks, visual adjustments, widget changes, 
+library API usage, refactors without architectural impact, single-screen changes.
 
 **History:** Intent and key decisions that shaped the task outcome.
 Purpose: Help the user recall what was done in 1–2 sentences. No code or detail.
