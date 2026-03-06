@@ -29,6 +29,7 @@ Extract all **Contracts** fields from history-log entries.
 - If a contract is declared but not enforced in code → mark "Active but unenforced"
 - If conflict is unclear → keep both and flag
 - Do NOT invent, expand, or reinterpret contracts
+- Later entries in history-log always supersede earlier ones for the same domain. Chronological order is the authority — the most recent entry wins.
 
 Overwrite `/obelisk/contracts/contracts-summary.md`:
 ```markdown
@@ -58,6 +59,7 @@ Extract all **Design** fields from history-log entries.
 - If conflict is unclear → flag in Open Design Questions
 - Do NOT invent, expand, or reinterpret decisions
 - Do NOT infer design from code
+- Later entries in history-log always supersede earlier ones for the same domain. Chronological order is the authority — the most recent entry wins.
 
 Overwrite `/obelisk/design/design-summary.md`:
 ```markdown

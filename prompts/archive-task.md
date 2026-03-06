@@ -1,15 +1,14 @@
 ---
 description: Archives a completed Obelisk task
 ---
-Read the full conversation from this session.
-Extract all relevant information to produce a complete, accurate archive.
-
----
-
 ## Guard
 
-Verify the conversation contains a completed implementation before proceeding.
-If no implementation is found → STOP. Output:
+Verify before proceeding that the conversation contains a completed task, which is:
+- User described a task
+- User requested implementation
+- Implementation was performed in this session
+
+If any of the above is missing → STOP. Output:
 ⛔ Nothing to archive. Complete implementation before running `@archive-task`.
 
 ---
@@ -74,13 +73,16 @@ Append at the END of `/obelisk/history/history-log.md`.
 ```markdown
 ## YYYYMMDD-HHMM | [Task Name] | TASK
 
-**Task:** [Summary of user request and the agreed goal & decisions after discovery.]
+**Task:** [Concise summary of user request and the agreed goal after discovery.]
 
-**Design:** [Architectural or feature-level decisions that shape how the system is built.
+**Design:** [Architectural or feature-level decisions agreed during discovery.
 Record only decisions that would matter if the system were rebuilt. Omit if none.]
 
 **Contracts:** [Business rules or invariants introduced or changed.
 Must hold regardless of implementation. Omit if none.]
+
+**Rejected:** [Approaches, contracts, or design decisions explicitly rejected during discovery and why.
+Omit if none.]
 
 ---
 ```
@@ -91,6 +93,8 @@ Must hold regardless of implementation. Omit if none.]
 - High-level only — no code, UI details, pixel values, or method names
 - No repetition — capture each decision once, in the most relevant field
 - Omit fields that do not apply — do not leave blank fields
+- Rejected Capture explicitly discarded approaches and the reason — prevents revisiting dead ends.
+- Contracts must be explicitly confirmed by the user — never inferred or assumed
 
 ---
 
