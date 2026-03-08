@@ -26,24 +26,6 @@ This workflow MUST NOT:
 
 ---
 
-## Definitions
-
-**Contract:** Business invariant that must hold regardless of implementation — even after a full rebuild. Capture durable rules only — not feature behavior or UI specifics.
-
-**Design:** Project-level or feature-level architectural decisions that shape how the system is built broadly. Ask: "Would this decision matter if the system were rebuilt from scratch?" If no, omit it.
-
-Do NOT record:
-- Implementation techniques or algorithms
-- Internal class or function names
-- Library usage details or configuration flags
-- Anything recoverable from reading the code
-
-Two sentence maximum. If it can't be said in two sentences, it's probably implementation detail.
-
-**History:** Concise summary of what was done and why. No code, no implementation detail.
-
----
-
 ## 1 — Write Task File
 
 Create `/obelisk/history/completed/YYYYMMDD-HHMM-[task-name].md`:
@@ -81,10 +63,10 @@ Append at the END of `/obelisk/history/history-log.md`.
 ```markdown
 ## YYYYMMDD-HHMM | [Task Name] | TASK
 
-**Task:** [Concise summary of user request and the agreed goal after discovery.]
+**Task:** [Concise summary of user request and the agreed goal after discovery. what was done and why. No code, no implementation detail]
 
-**Design:** [Architectural or feature-level decisions agreed during discovery.
-Record only decisions that would matter if the system were rebuilt. Omit if none.]
+**Rejected:** [Approaches, contracts, or design decisions explicitly rejected during discovery and why.
+Omit if none.]
 
 **Contracts:** [Business rules or invariants introduced or changed. Must hold regardless of implementation. Omit if none. Use the exact format below — copy rule text verbatim from the approved Contract Change block in discovery:]
 
@@ -94,9 +76,6 @@ Rule: [exact rule text]
 Contract Change: UPDATE
 Old: "[exact previous rule text]"
 New: [exact updated rule text]
-
-**Rejected:** [Approaches, contracts, or design decisions explicitly rejected during discovery and why.
-Omit if none.]
 
 ---
 ```
@@ -121,14 +100,6 @@ YYYYMMDD-HHMM | [Task Name] | [Copy contract entry from history-log — no rewor
 
 ---
 
-## 4 — Update Design
-
-If new or changed design decisions exist, , append to the end of`## New` in `design-summary.md`:
-```markdown
-YYYYMMDD-HHMM | [Task Name] | [Copy design entry from history-log — no rewording]
-```
-
----
 
 
 Output:

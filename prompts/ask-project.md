@@ -11,24 +11,15 @@ You MUST NOT modify files or trigger workflows.
 
 Read in order, stop when question is answered.
 
-### 1. Summaries (default)
-
-- `/obelisk/contracts/contracts-summary.md`
-- `/obelisk/design/design-summary.md`
-
-Use for most questions about current state.
-
-### 2. History Log (rationale and evolution)
+### 1. History Log (rationale and evolution)
 
 - `/obelisk/history/history-log.md`
 
-Use when question concerns decisions, rejected alternatives, deferred work, or project evolution.
-
-### 3. Code (implementation verification)
+### 2. Code (implementation verification)
 
 Use only if question concerns current implementation or feature existence.
 
-### 4. Archived Task (optional)
+### 3. Archived Task (optional)
 
 - `/obelisk/history/completed/[task-file].md`
 

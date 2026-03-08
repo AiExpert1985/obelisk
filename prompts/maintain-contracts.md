@@ -5,7 +5,6 @@ description: Compact log and regenerate contracts summary
 
 - `/obelisk/history/history-log.md`
 - `/obelisk/contracts/contracts-summary.md`
-- `/obelisk/design/design-summary.md`
 
 If any file is missing → STOP. Output: Use `@init-project` to initialize the project.
 
@@ -16,7 +15,7 @@ If any file is missing → STOP. Output: Use `@init-project` to initialize the p
 `history-log.md` is the sole source of truth.
 Entries are ordered oldest → newest. Later entries may add, refine, or replace earlier ones.
 Read the entire file before generating summaries.
-Only **Design** and **Contracts** fields are used for summaries.
+Only **Contracts** fields are used for summaries.
 
 ---
 
@@ -47,38 +46,7 @@ Keep concise — under 1500 tokens. `## New` must remain present and empty after
 
 ---
 
-## Regenerate Design Summary
-
-Extract all **Design** fields from history-log entries.
-
-- Keep only architectural or feature-level decisions
-- Skip UI tweaks, layout details, and implementation specifics
-- If a later entry revises an earlier decision, keep the latest version
-- Merge related decisions describing the same architectural element
-- If design contradicts a contract → trust the contract, flag in Open Design Questions
-- If conflict is unclear → flag in Open Design Questions
-- Do NOT invent, expand, or reinterpret decisions
-- Do NOT infer design from code
-- Later entries in history-log always supersede earlier ones for the same domain. Chronological order is the authority — the most recent entry wins.
-
-Overwrite `/obelisk/design/design-summary.md`:
-```markdown
-# Design Summary
-
-Generated: YYYY-MM-DD
-
-[Concise list of active architectural decisions.]
-
-## Open Design Questions
-[Unresolved decisions or detected conflicts — omit if none]
-```
-
-Design must be system-level or feature-level, high-level, and implementation-agnostic.
-Keep concise — under 2000 tokens.
-
----
-
 Output:
 
 ✅ MAINTAIN COMPLETE
-Contracts and design summaries regenerated.
+Contracts summary regenerated.

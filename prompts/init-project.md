@@ -5,20 +5,10 @@ description: Initialize new Obelisk project
 
 Check that none of these exist:
 - `/obelisk/contracts/contracts-summary.md`
-- `/obelisk/contracts/contracts-log.md`
-- `/obelisk/design/design-summary.md`
-- `/obelisk/design/design-log.md`
 - `/obelisk/history/history-log.md`
 
 If any exist → STOP. Output:
 ⛔ Project already initialized. Remove existing obelisk state before re-initializing.
-
----
-
-## Contract vs. Design Boundary
-
-**Contract:** Business invariant that must hold regardless of implementation — even after a full rebuild.
-**Design:** How the system is built — tech, schema, architecture, patterns.
 
 ---
 
@@ -74,6 +64,8 @@ If discovery was skipped or cut short, populate only what was explicitly establi
 
 ### 1 — Create contracts-summary.md
 
+**Contract:** Business invariant that must hold regardless of implementation — even after a full 
+
 Create `/obelisk/contracts/contracts-summary.md`:
 
 ```markdown
@@ -95,36 +87,7 @@ _(empty — populated after first maintenance)_
 [All contracts and invariants established during discovery]
 ```
 
-### 2 — Create design-summary.md
-
-Create `/obelisk/design/design-summary.md`:
-
-```markdown
-# Design Summary
-
-Generated: YYYY-MM-DD
-
-## System Architecture
-_(empty — populated after first maintenance)_
-
-## Data Model
-_(empty — populated after first maintenance)_
-
-## Core Design Principles
-_(empty — populated after first maintenance)_
-
-## Modules
-_(empty — populated after first maintenance)_
-
-## Open Design Questions
-_(empty — populated after first maintenance)_
-
-## New
-
-[All design decisions established during discovery]
-```
-
-### 3 — Create history-log.md
+### 2 — Create history-log.md
 
 Create `/obelisk/history/history-log.md`:
 

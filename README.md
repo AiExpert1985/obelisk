@@ -26,11 +26,10 @@ Between discovery and archive, the model works freely.
 ## Knowledge Layers
 
 **Contracts** — Business invariants that must hold regardless of implementation.
-**Design** — Long-lived architectural decisions that shape how the system is built.
 **History** — Chronological record of tasks, decisions, and outcomes.
 
 History is the **single source of truth**.
-Contracts and Design summaries are **derived projections** generated from it.
+Contracts summary is **derived projections** generated from it.
 Chat history is temporary and has no authority.
 
 ---
@@ -44,7 +43,7 @@ Chat history is temporary and has no authority.
 │   ├── archive-task.md
 │   ├── ask-project.md
 │   ├── suggest-task.md
-│   ├── maintain-summaries.md
+│   ├── maintain-contracts.md
 │   └── help.md
 └── guidelines/
     └── ai-engineering.md
@@ -52,8 +51,6 @@ Chat history is temporary and has no authority.
 /obelisk/                       # Project state (local, per-project)
 ├── contracts/
 │   └── contracts-summary.md    # Active projection (derived from history)
-├── design/
-│   └── design-summary.md       # Active projection (derived from history)
 └── history/
     ├── history-log.md          # Canonical record of all tasks and decisions
     └── completed/              # Detailed file per completed task
@@ -65,10 +62,10 @@ Chat history is temporary and has no authority.
 
 When working on a task, read files in this order:
 
-1. `/obelisk/contracts/contracts-summary.md`
-2. `/obelisk/design/design-summary.md`
+1. `/obelisk/history/history-log.md`
+2. `/obelisk/contracts/contracts-summary.md`
 3. `/obelisk-core/guidelines/ai-engineering.md`
-4. `/obelisk/history/history-log.md` — only when running `@maintain-summaries`
+
 
 Summaries provide current system state. History preserves how the system evolved.
 
@@ -94,22 +91,22 @@ Focused discovery conversation. The model reads summaries and engineering guidel
 ### 3 — `@archive-task`
 User-triggered after implementation. The model writes a detailed task file under `/history/completed/`, appends a structured entry to `history-log.md`, and appends new contracts or design decisions to summaries under `## New`.
 
-### 4 — `@maintain-summaries`
-User-triggered periodic maintenance. The model reads the entire `history-log.md`, extracts all Contracts and Design entries, keeps only the latest active decisions, and regenerates clean summaries.
+### 4 — `@maintain-contracts`
+User-triggered periodic maintenance. The model reads the entire `history-log.md`, extracts all Contracts entries, keeps only the latest active decisions, and regenerates a clean summary.
 
 ---
 
 ## Commands
 
-| Command | Purpose |
-|---|---|
-| `@init-project` | Initialize project knowledge |
-| `@new-task [description]` | Discover, confirm, and implement a task |
-| `@archive-task` | Archive completed work and update knowledge |
-| `@maintain-summaries` | Regenerate contracts and design summaries |
-| `@ask-project` | Query project knowledge |
-| `@suggest-task` | Suggest next high-impact tasks |
-| `@help` | Show available commands |
+| Command                   | Purpose                                     |
+| ------------------------- | ------------------------------------------- |
+| `@init-project`           | Initialize project knowledge                |
+| `@new-task [description]` | Discover, confirm, and implement a task     |
+| `@archive-task`           | Archive completed work and update knowledge |
+| `@maintain-contracts`     | Regenerate contracts and design summaries   |
+| `@ask-project`            | Query project knowledge                     |
+| `@suggest-task`           | Suggest next high-impact tasks              |
+| `@help`                   | Show available commands                     |
 
 ---
 
