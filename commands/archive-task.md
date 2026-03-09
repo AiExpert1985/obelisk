@@ -62,6 +62,7 @@ Append at the END of `/obelisk/history/history-log.md`.
 - Be concise — one to three sentences per field maximum
 - High-level only — no code, UI details, pixel values, method names, or implementation specifics recoverable from reading the code.
 - No repetition — capture each decision once, in the most relevant field
+- Omit the `Rejected` field entirely if there is nothing to record.
 
 ---
 
