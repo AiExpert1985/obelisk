@@ -42,7 +42,8 @@ All non-trivial assumptions must be confirmed before proceeding.
 
 If a contract change is detected:
 
-``` markdown
+**Format:** 
+
 📋 Contract Change
 
 Type: ADD | UPDATE
@@ -55,17 +56,18 @@ Old: "[exact existing contract text]"
 Reason: [why this rule is required]
 
 Approve? yes/no
-```
+
 
 ## Discovery Output Format
 
 No narration. No thinking out loud. No filler.
 
-```markdown
+**Format:**
+
 **Questions:**    
 1. [question]    
    Recommendation: [option] — [reason]
-```
+
 
 If no questions exist: state **"No clarifications needed"** and list assumptions only.
 
@@ -114,5 +116,5 @@ For any follow-up request or scope change:
 
 When done, output:
 ```markdown
-Implementation complete. Enter `@archive-task` to archive.
+Implementation complete. Enter `/archive-task` to archive.
 ```

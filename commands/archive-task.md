@@ -70,14 +70,14 @@ Append at the END of `/obelisk/history/history-log.md`.
 If contract changes exist, append to END of `/obelisk/contracts/contracts-log.md`:
 
 ```markdown
-YYYYMMDD-HHMM | [Task Name] | ADD
+## YYYYMMDD-HHMM | [Task Name] | ADD
 Rule: [exact rule text as approved in discovery]
 
-YYYYMMDD-HHMM | [Task Name] | UPDATE
+## YYYYMMDD-HHMM | [Task Name] | UPDATE
 Old: "[exact previous rule text]"
 New: [exact updated rule text]
 
-YYYYMMDD-HHMM | [Task Name] | REMOVE
+## YYYYMMDD-HHMM | [Task Name] | REMOVE
 Rule: "[exact rule text removed]"
 ```
 
