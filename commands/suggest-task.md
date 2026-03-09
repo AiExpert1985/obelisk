@@ -30,7 +30,7 @@ to understand work done in this software project and the rules, and to be able t
 ---
 
 ## Output
-```markdown
+
 1. **[Task Name]**
    What: [2-3 sentences]
    Why: [one reason grounded in contracts or history]
@@ -38,4 +38,3 @@ to understand work done in this software project and the rules, and to be able t
 2. **[Task Name]**
    What: [2-3 sentences]
    Why: [one reason grounded in contracts or history]
-```

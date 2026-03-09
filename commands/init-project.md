@@ -39,7 +39,8 @@ Recommendation: [option] — [brief reason]
 
 When understanding is sufficient, or user enters `initialize`, present a summary for review:
 
-```markdown
+**Format:**
+
 Project Summary
 
 What it is: [description]
@@ -51,7 +52,7 @@ Non-Goals: [explicit exclusions]
 Open Questions: [unresolved items — treated as task-level concerns]
 
 Type `initialize` to create project files, or correct anything above.
-```
+
 
 ---
 
